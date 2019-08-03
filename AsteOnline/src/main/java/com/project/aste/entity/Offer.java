@@ -1,4 +1,4 @@
-package com.project.offers.aste;
+package com.project.aste.entity;
 
 public class Offer {
 

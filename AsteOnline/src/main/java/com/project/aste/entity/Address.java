@@ -1,4 +1,4 @@
-package com.project.adresses.aste;
+package com.project.aste.entity;
 
 public class Address {
 

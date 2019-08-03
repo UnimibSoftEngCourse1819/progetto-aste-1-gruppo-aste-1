@@ -1,4 +1,4 @@
-package com.project.users.aste;
+package com.project.aste.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

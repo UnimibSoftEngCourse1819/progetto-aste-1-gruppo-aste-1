@@ -1,4 +1,4 @@
-package com.project.users.aste;
+package com.project.aste.entity;
 
 import java.util.Date;
 

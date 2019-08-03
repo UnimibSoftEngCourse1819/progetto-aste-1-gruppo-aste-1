@@ -13,7 +13,7 @@ public class Attribute {
 	@Column(name = "idAttribute")
 	private int idAttribute;
 	
-	@Column(name = "idAttribute")
+	@Column(name = "name")
 	private String name;
 	
 	public int getIdAttribute() {

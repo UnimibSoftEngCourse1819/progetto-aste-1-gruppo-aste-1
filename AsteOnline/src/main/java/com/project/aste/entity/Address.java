@@ -1,13 +1,33 @@
 package com.project.aste.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Address")
 public class Address {
 
+	@Id
 	private int id;
+	
+	@Column(name="idAddress")
 	private int idAddress;
+	
+	@Column(name="street")
 	private String street;
+	
+	@Column(name="province")
 	private String province;
+	
+	@Column(name="nation")
 	private String nation;
+	
+	@Column(name="houseNumber")
 	private String houseNumber;
+	
+	@Column(name="postalCode")
 	private int postalCode;
 	
 	

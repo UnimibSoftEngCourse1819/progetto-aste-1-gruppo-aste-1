@@ -1,10 +1,25 @@
 package com.project.aste.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Offer")
 public class Offer {
 
+	@Id
+	@Column(name="idOffer")
 	private int idOffer;
+	
+	@Column(name="amountOffers")
 	private String amountOffers;
+	
+	@Column(name="idOfferent")
 	private int idOfferent;
+	
+	@Column(name="idAuction")
 	private int idAuction;
 	
 	

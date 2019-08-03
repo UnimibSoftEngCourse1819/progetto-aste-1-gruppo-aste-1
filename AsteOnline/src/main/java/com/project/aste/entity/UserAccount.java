@@ -1,5 +1,6 @@
 package com.project.aste.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,16 +13,34 @@ public class UserAccount {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
 	private int id;
 	
+	@Column(name="name")
 	private String name;
+	
+	@Column(name="surname")
 	private String surname;
+	
+	@Column(name="email")
 	private String email;
+	
+	@Column(name="smsNotifications")
 	private boolean smsNotifications;
+	
+	@Column(name="emailNotification")
 	private boolean emailNotification;
+	
+	@Column(name="creditCardNumber")
 	private String creditCardNumber;
+	
+	@Column(name="numberOfCredits")
 	private int numberOfCredits;
+	
+	@Column(name="idAddress")
 	private int idAddress;
+	
+	@Column(name="idAuthentication")
 	private int idAuthentication;
 	
 	

@@ -12,7 +12,7 @@ public class Attribute {
 	@Id
 	@Column(name = "idAttribute")
 	private int idAttribute;
-	
+	//
 	@Column(name = "name")
 	private String name;
 	

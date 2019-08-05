@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 @Table(name="UserAccount")
 public class UserAccount {
 	
+	public UserAccount(){};
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")

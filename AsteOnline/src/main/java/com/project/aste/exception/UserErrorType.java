@@ -1,9 +1,9 @@
 package com.project.aste.exception;
 
-import com.project.aste.entity.AuthenticationData;
+import com.project.aste.entity.UserAccount;
 
 //
-public class UserErrorType /*extends AuthenticationData*/{
+public class UserErrorType extends UserAccount{
 	private String errorMessage;
 
 	public UserErrorType(final String errorMessage) {

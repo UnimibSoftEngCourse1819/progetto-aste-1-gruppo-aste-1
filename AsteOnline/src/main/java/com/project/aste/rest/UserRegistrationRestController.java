@@ -47,17 +47,17 @@ public class UserRegistrationRestController {
 		return new ResponseEntity<List<UserAccount>>(users, HttpStatus.OK);
 	}
 	//metodo post da rivedere
-//	@PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<AuthenticationData> createUser(@Valid @RequestBody final AuthenticationData user) {
-//		logger.info("Creating User : {}", user);
-//		if (userJpaRepository.findByName(user.getUsername()) != null) {
-//			logger.error("Unable to create. A User with name {} already exist", user.getUsername());
-//			return new ResponseEntity<AuthenticationData>(
-//					new UserErrorType(
-//							"Unable to create new user. A username " + user.getUsername() + " already exist."),
-//					HttpStatus.CONFLICT);
-//		}
-//		userJpaRepository.save(user);
-//		return new ResponseEntity<AuthenticationData>(user, HttpStatus.CREATED);
-//	}
+	@PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<UserAccount> createUser(@Valid @RequestBody final UserAccount user) {
+		logger.info("Creating User : {}", user);
+		if (userJpaRepository.findByName(user.getName()) != null) {
+			logger.error("Unable to create. A User with name {} already exist", user.getName());
+			return new ResponseEntity<UserAccount>(
+					new UserErrorType(
+							"Unable to create new user. A username " + user.getName() + " already exist."),
+					HttpStatus.CONFLICT);
+		}
+		userJpaRepository.save(user);
+		return new ResponseEntity<UserAccount>(user, HttpStatus.CREATED);
+	}
 }

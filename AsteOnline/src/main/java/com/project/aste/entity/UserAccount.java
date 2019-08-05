@@ -15,7 +15,7 @@ public class UserAccount {
 	public UserAccount(){};
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	//@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	private int id;
 	
@@ -30,6 +30,10 @@ public class UserAccount {
 	@Column(name="email")
 	@NotNull
 	private String email;
+	
+	@Column(name="telephone")
+	@NotNull
+	private String telephone;
 	
 	@Column(name="smsNotifications")
 	@NotNull
@@ -54,7 +58,7 @@ public class UserAccount {
 	private int idAuthentication;
 	
 	
-	public UserAccount(int id, String name, String surname, String email, boolean smsNotifications,
+	/*public UserAccount(int id, String name, String surname, String email, boolean smsNotifications,
 			boolean emailNotification, String creditCardNumber, int numberOfCredits, int idAddress,
 			int idAuthentication) {
 		super();
@@ -68,7 +72,7 @@ public class UserAccount {
 		this.numberOfCredits = numberOfCredits;
 		this.idAddress = idAddress;
 		this.idAuthentication = idAuthentication;
-	}
+	}*/
 	
 	public int getId() {
 		return id;
@@ -93,6 +97,13 @@ public class UserAccount {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getTelephone() {
+		return telephone;
+	}
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 	public boolean isSmsNotifications() {
 		return smsNotifications;

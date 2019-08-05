@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="UserAccount")
@@ -17,24 +18,31 @@ public class UserAccount {
 	private int id;
 	
 	@Column(name="name")
+	@NotNull
 	private String name;
 	
 	@Column(name="surname")
+	@NotNull
 	private String surname;
 	
 	@Column(name="email")
+	@NotNull
 	private String email;
 	
 	@Column(name="smsNotifications")
+	@NotNull
 	private boolean smsNotifications;
 	
 	@Column(name="emailNotification")
+	@NotNull
 	private boolean emailNotification;
 	
 	@Column(name="creditCardNumber")
+	@NotNull
 	private String creditCardNumber;
 	
 	@Column(name="numberOfCredits")
+	@NotNull
 	private int numberOfCredits;
 	
 	@Column(name="idAddress")

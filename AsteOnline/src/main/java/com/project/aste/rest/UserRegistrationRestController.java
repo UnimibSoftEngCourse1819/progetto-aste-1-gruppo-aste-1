@@ -1,7 +1,8 @@
 package com.project.aste.rest;
 import com.project.aste.exception.UserErrorType;
 import com.project.aste.entity.AuthenticationData;
-import com.project.aste.repository.UserJpaRepository;
+import com.project.aste.entity.UserAccount;
+import com.project.aste.repository.UserAccountJpaRepository;
 
 
 import java.util.List;
@@ -26,23 +27,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/register")
 public class UserRegistrationRestController {
 	public static final Logger logger = LoggerFactory.getLogger(UserRegistrationRestController.class);
-	private UserJpaRepository userJpaRepository;
+	private UserAccountJpaRepository userJpaRepository;
 
 	@Autowired
-	public void setUserJpaRepository(UserJpaRepository userJpaRepository) {
+	public void setUserJpaRepository(UserAccountJpaRepository userJpaRepository) {
 		this.userJpaRepository = userJpaRepository;
 	}
+	
 	//metodo get
 	@GetMapping("/")
-	public ResponseEntity<List<AuthenticationData>> listAllUsers() {
-		List<AuthenticationData> users = userJpaRepository.findAll();
+	public ResponseEntity<List<UserAccount>> listAllUsers() {
+		List<UserAccount> users = userJpaRepository.findAll();
 		if (users.isEmpty()) {
-			return new ResponseEntity<List<AuthenticationData>>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<List<UserAccount>>(HttpStatus.NO_CONTENT);
 			}
-		return new ResponseEntity<List<AuthenticationData>>(users, HttpStatus.OK);
+		return new ResponseEntity<List<UserAccount>>(users, HttpStatus.OK);
 	}
 	//metodo post da rivedere
 //	@PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)

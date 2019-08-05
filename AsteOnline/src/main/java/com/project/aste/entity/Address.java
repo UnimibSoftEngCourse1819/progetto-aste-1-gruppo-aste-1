@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="Address")
@@ -16,18 +17,23 @@ public class Address {
 	private int idAddress;
 	
 	@Column(name="street")
+	@NotNull
 	private String street;
 	
 	@Column(name="province")
+	@NotNull
 	private String province;
 	
 	@Column(name="nation")
+	@NotNull
 	private String nation;
 	
 	@Column(name="houseNumber")
+	@NotNull
 	private String houseNumber;
 	
 	@Column(name="postalCode")
+	@NotNull
 	private int postalCode;
 	
 	

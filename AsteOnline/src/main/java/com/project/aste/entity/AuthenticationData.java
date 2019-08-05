@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="AuthenticationData")
@@ -16,15 +17,19 @@ public class AuthenticationData {
 	private int idAuthentication;
 
 	@Column(name="username")
+	@NotNull
 	private String username;
 	
 	@Column(name="password")
+	@NotNull
 	private String password;
 	
 	@Column(name="registrationDatetime")
+	@NotNull
 	private Date registrationDatetime;
 	
 	@Column(name="idRole")
+	@NotNull
 	private int idRole;
 	
 	

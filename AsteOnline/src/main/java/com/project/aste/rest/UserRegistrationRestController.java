@@ -35,7 +35,7 @@ public class UserRegistrationRestController {
 	public void setUserJpaRepository(UserJpaRepository userJpaRepository) {
 		this.userJpaRepository = userJpaRepository;
 	}
-	
+	//metodo get
 	@GetMapping("/")
 	public ResponseEntity<List<AuthenticationData>> listAllUsers() {
 		List<AuthenticationData> users = userJpaRepository.findAll();
@@ -44,7 +44,7 @@ public class UserRegistrationRestController {
 			}
 		return new ResponseEntity<List<AuthenticationData>>(users, HttpStatus.OK);
 	}
-	
+	//metodo post da rivedere
 //	@PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
 //	public ResponseEntity<AuthenticationData> createUser(@Valid @RequestBody final AuthenticationData user) {
 //		logger.info("Creating User : {}", user);

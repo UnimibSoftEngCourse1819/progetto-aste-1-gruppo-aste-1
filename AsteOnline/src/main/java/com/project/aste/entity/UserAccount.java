@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="UserAccount")
+@Table(name="UsersAccount")
 public class UserAccount {
 	
 	public UserAccount(){};
@@ -35,7 +35,7 @@ public class UserAccount {
 	@NotNull
 	private boolean smsNotifications;
 	
-	@Column(name="emailNotification")
+	@Column(name="emailNotifications")
 	@NotNull
 	private boolean emailNotification;
 	

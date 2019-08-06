@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="Offer")
@@ -15,15 +15,13 @@ public class Offer {
 	private int idOffer;
 	
 	@Column(name="amountOffers")
-	@NotNull
+	@NotEmpty
 	private String amountOffers;
 	
 	@Column(name="idOfferent")
-	@NotNull
 	private int idOfferent;
 	
 	@Column(name="idAuction")
-	@NotNull
 	private int idAuction;
 	
 	

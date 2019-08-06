@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -17,19 +18,19 @@ public class Address {
 	private int idAddress;
 	
 	@Column(name="street")
-	@NotNull
+	@NotEmpty(message = "error.street.empty")
 	private String street;
 	
 	@Column(name="province")
-	@NotNull
+	@NotEmpty(message = "error.province.empty")
 	private String province;
 	
 	@Column(name="nation")
-	@NotNull
+	@NotEmpty(message = "error.nation.empty")
 	private String nation;
 	
 	@Column(name="houseNumber")
-	@NotNull
+	@NotEmpty(message = "error.houseNumber.empty")
 	private String houseNumber;
 	
 	@Column(name="postalCode")

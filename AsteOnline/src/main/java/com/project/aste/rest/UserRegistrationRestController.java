@@ -1,6 +1,5 @@
 package com.project.aste.rest;
 import com.project.aste.exception.CustomErrorType;
-import com.project.aste.exception.UserErrorType;
 import com.project.aste.entity.UserAccount;
 import com.project.aste.repository.UserAccountJpaRepository;
 
@@ -65,7 +64,7 @@ public class UserRegistrationRestController {
 		if (userJpaRepository.findByName(user.getName()) != null) {
 			logger.error("Utente non creato. L'utente {} è gia presente", user.getName());
 			return new ResponseEntity<UserAccount>(
-					new UserErrorType(
+					new CustomErrorType(
 							"Utente non creato. L'utente " + user.getName() + " è gia presente."),
 					HttpStatus.CONFLICT);
 		}

@@ -4,46 +4,65 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+
 
 @Entity
 @Table(name="Auctions")
 public class Auction {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "idAuction")
 	private int idAuction;
 	
+	@NotNull
 	@Column(name = "state")
 	private boolean state;
 	
+	@NotNull
 	@Column(name = "numTimeSlot")
 	private int numTimeSlot;
 	
+	@NotNull
 	@Column(name = "terminationType")
 	private boolean terminationType;
 	
+	@NotNull
 	@Column(name = "cancellationPenalty")
 	private boolean cancellationPenalty;
 	
+	@NotNull
 	@Column(name = "timeSlotDuration")
 	private LocalDateTime timeSlotDuration;
 	
+	@NotNull
 	@Column(name = "startTimeSlot")
 	private LocalDateTime startTimeSlot;
 	
+	@NotNull
 	@Column(name = "endTimeSlot")
 	private LocalDateTime endTimeSlot;
 	
-	@Column(name = "closed")
-	private boolean closed;
+	@NotNull
+	@Column(name = "closedEnvelop")
+	private boolean closedEnvelop;
 	
-	@Column(name = "idOffer")
-	private int idOffer;
 	
+	@NotNull
 	@Column(name = "idObjSer")
 	private int idObjSer;
+	
+
+	@NotEmpty
+	@Column(name = "winner")
+	private String winner ;
 	
 	@Column(name = "decline")
 	private boolean decline;
@@ -97,18 +116,13 @@ public class Auction {
 	public void setEndTimeSlot(LocalDateTime endTimeSlot) {
 		this.endTimeSlot = endTimeSlot;
 	}
-	public boolean isClosed() {
-		return closed;
+	public boolean isClosedEnvelop() {
+		return closedEnvelop;
 	}
-	public void setClosed(boolean closed) {
-		this.closed = closed;
+	public void setClosedEnvelop(boolean closed) {
+		this.closedEnvelop = closed;
 	}
-	public int getIdOffer() {
-		return idOffer;
-	}
-	public void setIdOffer(int idOffer) {
-		this.idOffer = idOffer;
-	}
+	
 	public int getIdObjSer() {
 		return idObjSer;
 	}
@@ -120,6 +134,12 @@ public class Auction {
 	}
 	public void setDecline(boolean decline) {
 		this.decline = decline;
+	}
+	public String getWinner() {
+		return winner;
+	}
+	public void setWinner(String winner) {
+		this.winner = winner;
 	}
 	
 	

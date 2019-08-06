@@ -2,11 +2,11 @@ package com.project.aste.exception;
 
 import com.project.aste.entity.UserAccount;
 
-//
-public class UserErrorType extends UserAccount{
+public class MessageErrorType extends UserAccount
+{
 	private String errorMessage;
-
-	public UserErrorType(final String errorMessage) {
+	
+	public MessageErrorType(final String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
 

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="AttributesCategoriesMap")
@@ -14,9 +15,11 @@ public class AttributeCategoryMap {
 	@Column(name = "id")
 	private int id;
 	
-	
+	@NotNull
 	@Column(name = "idCategory")
 	private int idCategory;
+	
+	@NotNull
 	@Column(name = "idAttribute")
 	private int idAttribute;
 	

@@ -1,6 +1,6 @@
 package com.project.aste.rest;
+import com.project.aste.exception.CustomErrorType;
 import com.project.aste.exception.UserErrorType;
-import com.project.aste.entity.AuthenticationData;
 import com.project.aste.entity.UserAccount;
 import com.project.aste.repository.UserAccountJpaRepository;
 
@@ -37,7 +37,7 @@ public class UserRegistrationRestController {
 		this.userJpaRepository = userJpaRepository;
 	}
 	
-	//metodo get
+	
 	@GetMapping("/")
 	public ResponseEntity<List<UserAccount>> listAllUsers() {
 		List<UserAccount> users = userJpaRepository.findAll();
@@ -46,18 +46,60 @@ public class UserRegistrationRestController {
 			}
 		return new ResponseEntity<List<UserAccount>>(users, HttpStatus.OK);
 	}
-	//metodo post da rivedere
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<UserAccount> getUserbyId(@PathVariable("id") final Integer id)
+	{
+		Optional<UserAccount> user = userJpaRepository.findById(id);
+		if (user.isPresent() == false) {
+			return new ResponseEntity<UserAccount>(
+			new CustomErrorType("L'utente con id "+ id + " non è stato trovato."), HttpStatus.NOT_FOUND);
+			}
+		return new ResponseEntity<UserAccount>(user.get(),HttpStatus.OK);
+	}
+
+	
 	@PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserAccount> createUser(@Valid @RequestBody final UserAccount user) {
 		logger.info("Creating User : {}", user);
 		if (userJpaRepository.findByName(user.getName()) != null) {
-			logger.error("Unable to create. A User with name {} already exist", user.getName());
+			logger.error("Utente non creato. L'utente {} è gia presente", user.getName());
 			return new ResponseEntity<UserAccount>(
 					new UserErrorType(
-							"Unable to create new user. A username " + user.getName() + " already exist."),
+							"Utente non creato. L'utente " + user.getName() + " è gia presente."),
 					HttpStatus.CONFLICT);
 		}
 		userJpaRepository.save(user);
 		return new ResponseEntity<UserAccount>(user, HttpStatus.CREATED);
 	}
+	
+	
+	@PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<UserAccount> updateUser(@PathVariable("id") final Integer id, @RequestBody UserAccount user) {
+		// fetch user based on id and set it to currentUser object of type UserDTO
+		Optional<UserAccount> optUser = userJpaRepository.findById(id);
+		if (optUser.isPresent() == false) {
+			return new ResponseEntity<UserAccount>(
+					new CustomErrorType("Utente non aggiornato. L'utente con id" + id + " non è stato trovato."), HttpStatus.NOT_FOUND);
+		}
+		UserAccount currentUser = optUser.get(); 
+		currentUser.setName(user.getName());
+		currentUser.setEmail(user.getEmail());
+		userJpaRepository.saveAndFlush(currentUser);
+		return new ResponseEntity<UserAccount>(currentUser, HttpStatus.OK);
+	}
+	
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<UserAccount> deleteUser(@PathVariable("id") final Integer id) {
+		Optional<UserAccount> optUser = userJpaRepository.findById(id);
+		if (optUser.isPresent() == false) {
+			return new ResponseEntity<UserAccount>(
+			new CustomErrorType("Unable to delete. User with id "
+			+ id + " not found."), HttpStatus.NOT_FOUND);
+			}
+		userJpaRepository.deleteById(id);
+		return new ResponseEntity<UserAccount>(HttpStatus.NO_CONTENT);
+	}
+	
 }

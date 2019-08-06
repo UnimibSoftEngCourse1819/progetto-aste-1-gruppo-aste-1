@@ -6,7 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.CreditCardNumber;
 
 @Entity
 @Table(name="UsersAccount")
@@ -20,13 +23,14 @@ public class UserAccount {
 	private int id;
 	
 	@Column(name="name")
-	@NotNull
+	@NotNull(message = "error.name.empty")
 	private String name;
 	
 	@Column(name="surname")
 	@NotNull
 	private String surname;
 	
+	@Email
 	@Column(name="email")
 	@NotNull
 	private String email;
@@ -39,12 +43,14 @@ public class UserAccount {
 	@NotNull
 	private boolean smsNotifications;
 	
+	
 	@Column(name="emailNotifications")
 	@NotNull
 	private boolean emailNotification;
 	
 	@Column(name="creditCardNumber")
 	@NotNull
+	@CreditCardNumber(message = "Carta di credito non valida")
 	private String creditCardNumber;
 	
 	@Column(name="numberOfCredits")

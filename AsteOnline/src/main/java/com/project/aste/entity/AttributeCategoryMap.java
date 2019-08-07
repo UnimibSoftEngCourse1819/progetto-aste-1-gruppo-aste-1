@@ -24,7 +24,9 @@ public class AttributeCategoryMap {
 	private int idAttribute;
 	
 	
-	
+	public AttributeCategoryMap() {
+		super();
+	}
 	public int getId() {
 		return id;
 	}

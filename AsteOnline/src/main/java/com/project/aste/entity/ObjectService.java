@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="ObjectsAndServices")
@@ -13,31 +15,39 @@ public class ObjectService {
 	@Column(name = "idObjSer")
 	private int idObjSer;
 	
+	@NotEmpty
 	@Column(name = "name")
 	private String name;
 	
+	@NotEmpty
 	@Column(name = "description")
 	private String description;
 	
+	@NotNull
 	@Column(name = "startPrice")
 	private double startPrice;
 	
+	@NotNull
 	@Column(name = "idObject")
 	private boolean idObject;
 	
+	@NotNull
 	@Column(name = "isAvailable")
 	private boolean isAvailable;
 	
+	@NotNull
 	@Column(name = "idCategory")
 	private int idCategory;
 	
+	@NotNull
 	@Column(name = "idUser")
 	private int idUser;
 	
+	@NotNull
 	@Column(name = "idAddress")
 	private int idAddress;
 	
-	
+	public ObjectService() {}
 	
 	public int getIdObjSer() {
 		return idObjSer;

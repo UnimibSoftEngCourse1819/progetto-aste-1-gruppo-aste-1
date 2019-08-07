@@ -47,7 +47,7 @@ public class AuctionRestController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Auction> getUserbyId(@PathVariable("id") final Integer id)
+	public ResponseEntity<Auction> getAuctionbyId(@PathVariable("id") final Integer id)
 	{
 		Optional<Auction> auction = auctionJpaRepository.findById(id);
 		if (auction.isPresent() == false) {
@@ -59,7 +59,7 @@ public class AuctionRestController {
 
 	
 	@PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Auction> createUser(@Valid @RequestBody final Auction auction) {
+	public ResponseEntity<Auction> createAuction(@Valid @RequestBody final Auction auction) {
 		logger.info("Creating User : {}", auction);
 		if (auctionJpaRepository.findById(auction.getIdAuction()) != null) {
 			logger.error("Asta non creata. L'asta {} è gia presente", auction.getIdAuction());
@@ -74,7 +74,7 @@ public class AuctionRestController {
 	
 	
 	@PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Auction> updateUser(@PathVariable("id") final Integer id, @RequestBody Auction auction) {
+	public ResponseEntity<Auction> updateAuction(@PathVariable("id") final Integer id, @RequestBody Auction auction) {
 		// fetch auction based on id and set it to currentUser object of type UserDTO
 		Optional<Auction> optAuction = auctionJpaRepository.findById(id);
 		if (optAuction.isPresent() == false) {

@@ -8,18 +8,20 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="Address")
+@Table(name="Addresses")
 public class Address {
 
-	@Id
-	private int id;
-	
+	@Id	
 	@Column(name="idAddress")
 	private int idAddress;
 	
 	@Column(name="street")
 	@NotEmpty(message = "error.street.empty")
 	private String street;
+	
+	@Column(name="city")
+	@NotEmpty(message = "error.city.empty")
+	private String city;
 	
 	@Column(name="province")
 	@NotEmpty(message = "error.province.empty")
@@ -38,10 +40,15 @@ public class Address {
 	private int postalCode;
 	
 	
-	public Address(int id, int idAddress, String street, String province, String nation, String houseNumber,
+	
+	public Address() {
+		super();
+	}
+
+
+	public Address( int idAddress, String street, String province, String nation, String houseNumber,
 			int postalCode) {
 		super();
-		this.id = id;
 		this.idAddress = idAddress;
 		this.street = street;
 		this.province = province;
@@ -51,13 +58,14 @@ public class Address {
 	}
 
 
-	public int getId() {
-		return id;
+
+	public String getCity() {
+		return city;
 	}
 
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 

@@ -8,5 +8,5 @@ import com.project.aste.entity.Auction;
 
 @Repository
 public interface AuctionJpaRepository extends JpaRepository<Auction, Integer> {
-	 Auction findById(int idAuction);
+	public Auction findById(int idAuction);
 }

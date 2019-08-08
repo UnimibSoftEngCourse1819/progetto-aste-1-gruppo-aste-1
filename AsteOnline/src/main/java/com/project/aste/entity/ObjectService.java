@@ -2,6 +2,8 @@ package com.project.aste.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -12,6 +14,7 @@ import javax.validation.constraints.NotNull;
 public class ObjectService {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "idObjSer")
 	private int idObjSer;
 	
@@ -28,7 +31,7 @@ public class ObjectService {
 	private double startPrice;
 	
 	@NotNull
-	@Column(name = "idObject")
+	@Column(name = "isObject")
 	private boolean idObject;
 	
 	@NotNull
@@ -47,7 +50,12 @@ public class ObjectService {
 	@Column(name = "idAddress")
 	private int idAddress;
 	
-	public ObjectService() {}
+	
+	
+	public ObjectService() {
+		super();
+	}
+	
 	
 	public int getIdObjSer() {
 		return idObjSer;

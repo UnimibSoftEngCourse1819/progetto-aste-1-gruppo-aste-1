@@ -43,7 +43,7 @@ public class ObjectServiceRestController {
 	}
 	
 	@GetMapping("/")
-	public ResponseEntity<List<ObjectService>> listAllUsers() {
+	public ResponseEntity<List<ObjectService>> listAllObjServices() {
 		List<ObjectService> obj = objJpaRepository.findAll();
 		if (obj.isEmpty()) {
 			return new ResponseEntity<List<ObjectService>>(HttpStatus.NO_CONTENT);
@@ -52,12 +52,12 @@ public class ObjectServiceRestController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<ObjectService> getUserbyId(@PathVariable("id") final Integer id)
+	public ResponseEntity<ObjectService> getObjServicesbyId(@PathVariable("id") final Integer id)
 	{
 		Optional<ObjectService> obj = objJpaRepository.findById(id);
 		if (obj.isPresent() == false) {
 			return new ResponseEntity<ObjectService>(
-			new ObjectServiceErrorType("L'oggetto con id "+ id + " non è stato trovato."), HttpStatus.NOT_FOUND);
+			new ObjectServiceErrorType("L'oggetto e servizio con id "+ id + " non è stato trovato."), HttpStatus.NOT_FOUND);
 			}
 		return new ResponseEntity<ObjectService>(obj.get(),HttpStatus.OK);
 	}
@@ -67,7 +67,7 @@ public class ObjectServiceRestController {
 	public ResponseEntity<ObjectService> createUser(@Valid @RequestBody final ObjectService obj) {
 		logger.info("Creating User : {}", obj);
 		if (objJpaRepository.findById(obj.getIdObjSer()) != null) {
-			logger.error("Utente non creato. L'utente {} è gia presente", obj.getName());
+			logger.error("Oggetto e servizio non creato. L'oggetto e servizio {} è gia presente", obj.getName());
 			return new ResponseEntity<ObjectService>(
 					new ObjectServiceErrorType(
 							"Utente non creato. L'utente " + obj.getName() + " è gia presente."),
@@ -78,8 +78,8 @@ public class ObjectServiceRestController {
 	}
 	
 	@PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ObjectService> updateUser(@PathVariable("id") final Integer id, @RequestBody ObjectService obj) {
-		// fetch obj based on id and set it to currentUser object of type UserDTO
+	public ResponseEntity<ObjectService> updateObjServices(@PathVariable("id") final Integer id, @RequestBody ObjectService obj) {
+
 		Optional<ObjectService> optObj = objJpaRepository.findById(id);
 		if (optObj.isPresent() == false) {
 			return new ResponseEntity<ObjectService>(
@@ -100,7 +100,7 @@ public class ObjectServiceRestController {
 	
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<ObjectService> deleteUser(@PathVariable("id") final Integer id) {
+	public ResponseEntity<ObjectService> deleteObjServices(@PathVariable("id") final Integer id) {
 		Optional<ObjectService> optUser = objJpaRepository.findById(id);
 		if (optUser.isPresent() == false) {
 			return new ResponseEntity<ObjectService>(

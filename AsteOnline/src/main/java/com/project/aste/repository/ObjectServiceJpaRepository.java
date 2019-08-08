@@ -7,7 +7,8 @@ import com.project.aste.entity.ObjectService;
 
 @Repository
 public interface ObjectServiceJpaRepository extends JpaRepository<ObjectService, Integer> {
-	ObjectService findById(int idObjSer);
+	
+	public ObjectService findById(int idObjSer);
 }
 
 

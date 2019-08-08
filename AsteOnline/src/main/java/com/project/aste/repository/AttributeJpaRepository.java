@@ -6,9 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.project.aste.entity.Attribute;
 
 
-
 @Repository
 public interface AttributeJpaRepository extends JpaRepository<Attribute, Integer>{
 
-	Attribute findById(int idAttributeJpaRepository);
+	public Attribute findById(int idAttributeJpaRepository);
 }

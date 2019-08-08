@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -17,11 +18,11 @@ public class AuthenticationData {
 	private int idAuthentication;
 
 	@Column(name="username")
-	@NotNull
+	@NotEmpty(message = "error.username.empty")
 	private String username;
 	
 	@Column(name="password")
-	@NotNull
+	@NotEmpty(message = "error.password.empty")
 	private String password;
 	
 	@Column(name="registrationDatetime")
@@ -35,6 +36,9 @@ public class AuthenticationData {
 	
 	
 	
+	public AuthenticationData() {
+		super();
+	}
 	public AuthenticationData(int idAuthentication, String username, String password, Date registrationDatetime,
 			int idRole) {
 		super();

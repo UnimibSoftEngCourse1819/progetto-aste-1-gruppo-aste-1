@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 
 
 
+
 @Entity
 @Table(name="Auctions")
 public class Auction {
@@ -26,7 +27,7 @@ public class Auction {
 	@Column(name = "state")
 	private boolean state;
 	
-	@NotNull
+	@NotNull(message = "error.auction.numTimeSlot.null")
 	@Column(name = "numTimeSlot")
 	private int numTimeSlot;
 	
@@ -38,15 +39,15 @@ public class Auction {
 	@Column(name = "cancellationPenalty")
 	private boolean cancellationPenalty;
 	
-	@NotNull
+	@NotNull(message = "error.auction.timeSlotDuration.null")
 	@Column(name = "timeSlotDuration")
 	private LocalDateTime timeSlotDuration;
 	
-	@NotNull
+	@NotNull(message = "error.auction.startTimeSlot.null")
 	@Column(name = "startTimeSlot")
 	private LocalDateTime startTimeSlot;
 	
-	@NotNull
+	@NotNull(message = "error.auction.endTimeSlot.null")
 	@Column(name = "endTimeSlot")
 	private LocalDateTime endTimeSlot;
 	
@@ -55,14 +56,14 @@ public class Auction {
 	private boolean closedEnvelop;
 	
 	
-	@NotNull
+	@NotNull(message = "error.auction.idObjSer.null")
 	@Column(name = "idObjSer")
 	private int idObjSer;
 	
 
-	@NotEmpty
 	@Column(name = "winner")
 	private String winner ;
+	
 	
 	@Column(name = "decline")
 	private boolean decline;

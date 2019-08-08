@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 @Table(name="Role")
 public class Role {
 
+		public Role() {}
 	@Id
 	@Column(name="idRole")
 	private int idRole;

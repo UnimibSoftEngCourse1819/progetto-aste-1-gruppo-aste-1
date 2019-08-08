@@ -18,7 +18,7 @@ public class Attribute {
 	@Column(name = "idAttribute")
 	private int idAttribute;
 	
-	@NotEmpty
+	@NotEmpty(message = "error.attribute.name.empty")
 	@Column(name = "name")
 	private String name;
 	

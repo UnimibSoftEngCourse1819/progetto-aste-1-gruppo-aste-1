@@ -15,11 +15,11 @@ public class AttributeCategoryMap {
 	@Column(name = "id")
 	private int id;
 	
-	@NotNull
+	@NotNull(message = "error.map.idcategory.null")
 	@Column(name = "idCategory")
 	private int idCategory;
 	
-	@NotNull
+	@NotNull(message = "error.map.idAttribute.null")
 	@Column(name = "idAttribute")
 	private int idAttribute;
 	

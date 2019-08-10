@@ -62,7 +62,8 @@ public class CategoryRestController {
 	@PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Category> createCategory(@Valid @RequestBody final Category category) {
 		logger.info("Creating category : {}", category);
-		if (categoryJpaRepository.findById(category.getIdCategory()) != null) {
+		if (categoryJpaRepository.findById(category.getIdCategory()) != null)
+				{
 			logger.error("Categoria non creata. La categoria {} è gia presente", category.getIdCategory());
 			return new ResponseEntity<Category>(
 					new CategoryErrorType(

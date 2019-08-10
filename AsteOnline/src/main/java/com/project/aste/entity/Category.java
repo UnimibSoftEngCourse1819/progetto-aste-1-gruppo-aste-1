@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 public class Category {
 	
 		@Id
-		//@GeneratedValue(strategy=GenerationType.IDENTITY)
+		@GeneratedValue(strategy=GenerationType.IDENTITY)
 		@Column(name = "idCategory")
 		private int idCategory;
 		

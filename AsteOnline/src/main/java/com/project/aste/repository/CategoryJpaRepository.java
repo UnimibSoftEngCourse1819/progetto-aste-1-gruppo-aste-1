@@ -8,4 +8,6 @@ import com.project.aste.entity.Category;
 public interface CategoryJpaRepository extends JpaRepository<Category, Integer>{
 
 	public Category findById(int id);
+	
+	
 }
